@@ -260,15 +260,15 @@ export default function RelatorioAlunosPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[760px]">
+            <div className="overflow-x-auto print:overflow-visible">
+              <table className="w-full min-w-[760px] print:min-w-0 print:w-full print:table-fixed">
                 <thead className="border-b border-[#303030] bg-[#181818] print:border-gray-300 print:bg-gray-100">
                   <tr>
                     {["Nome", "Nascimento", "Idade", "Responsável", "Instrumentos"].map(
                       (titulo) => (
                         <th
                           key={titulo}
-                          className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                          className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500"
                         >
                           {titulo}
                         </th>
@@ -283,19 +283,19 @@ export default function RelatorioAlunosPage() {
                       key={aluno.id}
                       className="hover:bg-[#202020] print:hover:bg-transparent"
                     >
-                      <td className="px-4 py-3 text-sm font-medium text-white print:text-black">
+                      <td className="break-words px-3 py-2 text-sm font-medium text-white print:text-black">
                         {aluno.nome}
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-400 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-400 print:text-black">
                         {formatarData(aluno.dataNascimento)}
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-400 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-400 print:text-black">
                         {calcularIdade(aluno.dataNascimento)}
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-400 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-400 print:text-black">
                         {aluno.responsavel}
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="break-words px-3 py-2">
                         <div className="flex flex-wrap gap-1.5">
                           {aluno.instrumentos.map((instrumento) => (
                             <span

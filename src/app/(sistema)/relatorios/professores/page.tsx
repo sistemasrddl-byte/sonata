@@ -601,30 +601,30 @@ export default function RelatorioProfessoresPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto print:overflow-visible">
 
-              <table className="w-full min-w-[650px]">
+              <table className="w-full min-w-[650px] print:min-w-0 print:w-full print:table-fixed">
 
                 <thead className="border-b border-[#303030] bg-[#181818] print:border-gray-300 print:bg-gray-100">
 
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500">
                       Professor
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500">
                       Instrumentos
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500">
                       Alunos
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500">
                       Aulas
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500">
                       Status
                     </th>
                   </tr>
@@ -647,11 +647,11 @@ export default function RelatorioProfessoresPage() {
                           className="hover:bg-[#202020] print:hover:bg-transparent"
                         >
 
-                          <td className="px-4 py-3 text-sm font-medium text-white print:text-black">
+                          <td className="break-words px-3 py-2 text-sm font-medium text-white print:text-black">
                             {professor.nome}
                           </td>
 
-                          <td className="px-4 py-3">
+                          <td className="break-words px-3 py-2">
                             <div className="flex flex-wrap gap-1.5">
 
                               {item.instrumentos.length >
@@ -681,15 +681,15 @@ export default function RelatorioProfessoresPage() {
                             </div>
                           </td>
 
-                          <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                          <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                             {item.alunosIds.length}
                           </td>
 
-                          <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                          <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                             {item.aulas.length}
                           </td>
 
-                          <td className="px-4 py-3">
+                          <td className="break-words px-3 py-2">
 
                             <span
                               className={`inline-flex min-w-[68px] justify-center rounded-full border px-2.5 py-1 text-[10px] font-semibold ${

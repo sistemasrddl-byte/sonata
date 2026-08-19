@@ -755,8 +755,8 @@ export default function RelatorioDespesasPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[1200px]">
+            <div className="overflow-x-auto print:overflow-visible">
+              <table className="w-full min-w-[1200px] print:min-w-0 print:w-full print:table-fixed">
                 <thead className="border-b border-[#303030] bg-[#181818] print:border-gray-300 print:bg-gray-100">
                   <tr>
                     {[
@@ -772,7 +772,7 @@ export default function RelatorioDespesasPage() {
                       (titulo) => (
                         <th
                           key={titulo}
-                          className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                          className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500"
                         >
                           {titulo}
                         </th>
@@ -788,17 +788,17 @@ export default function RelatorioDespesasPage() {
                         key={despesa.id}
                         className="hover:bg-[#202020] print:hover:bg-transparent"
                       >
-                        <td className="px-4 py-3 text-sm font-medium text-white print:text-black">
+                        <td className="break-words px-3 py-2 text-sm font-medium text-white print:text-black">
                           {despesa.descricao}
                         </td>
 
-                        <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                        <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                           {categoriaLabel(
                             despesa.categoria
                           )}
                         </td>
 
-                        <td className="px-4 py-3">
+                        <td className="break-words px-3 py-2">
                           <span className="rounded-full bg-[#FDC700]/10 px-2.5 py-1 text-[10px] text-[#FDC700]">
                             {despesa.tipo ===
                             "fixa"
@@ -807,19 +807,19 @@ export default function RelatorioDespesasPage() {
                           </span>
                         </td>
 
-                        <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                        <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                           {formatarData(
                             despesa.dataVencimento
                           )}
                         </td>
 
-                        <td className="px-4 py-3 text-sm font-semibold text-white print:text-black">
+                        <td className="break-words px-3 py-2 text-sm font-semibold text-white print:text-black">
                           {formatarMoeda(
                             despesa.valor
                           )}
                         </td>
 
-                        <td className="px-4 py-3">
+                        <td className="break-words px-3 py-2">
                           <span
                             className={`inline-flex min-w-[72px] justify-center rounded-full border px-2.5 py-1 text-[10px] font-semibold ${statusInfo[despesa.status].className} print:border-gray-400 print:bg-transparent print:text-black`}
                           >
@@ -831,7 +831,7 @@ export default function RelatorioDespesasPage() {
                           </span>
                         </td>
 
-                        <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                        <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                           {despesa.dataPagamento
                             ? formatarData(
                                 despesa.dataPagamento
@@ -839,7 +839,7 @@ export default function RelatorioDespesasPage() {
                             : "-"}
                         </td>
 
-                        <td className="px-4 py-3 text-sm text-gray-400 print:text-black">
+                        <td className="break-words px-3 py-2 text-sm text-gray-400 print:text-black">
                           {despesa.formaPagamento
                             ? formaPagamentoInfo[
                                 despesa.formaPagamento
@@ -879,8 +879,8 @@ export default function RelatorioDespesasPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[1050px]">
+            <div className="overflow-x-auto print:overflow-visible">
+              <table className="w-full min-w-[1050px] print:min-w-0 print:w-full print:table-fixed">
                 <thead className="border-b border-[#303030] bg-[#181818] print:border-gray-300 print:bg-gray-100">
                   <tr>
                     {[
@@ -894,7 +894,7 @@ export default function RelatorioDespesasPage() {
                     ].map((titulo) => (
                       <th
                         key={titulo}
-                        className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                        className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500"
                       >
                         {titulo}
                       </th>
@@ -908,41 +908,41 @@ export default function RelatorioDespesasPage() {
                       key={compromisso.id}
                       className="hover:bg-[#202020] print:hover:bg-transparent"
                     >
-                      <td className="px-4 py-3 text-sm font-medium text-white print:text-black">
+                      <td className="break-words px-3 py-2 text-sm font-medium text-white print:text-black">
                         {compromisso.descricao}
                       </td>
 
-                      <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                         {categoriaCompromissoLabel(
                           compromisso.categoria
                         )}
                       </td>
 
-                      <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                         {formatarData(
                           compromisso.dataCompra
                         )}
                       </td>
 
-                      <td className="px-4 py-3 text-sm font-semibold text-white print:text-black">
+                      <td className="break-words px-3 py-2 text-sm font-semibold text-white print:text-black">
                         {formatarMoeda(
                           compromisso.valorTotal
                         )}
                       </td>
 
-                      <td className="px-4 py-3 text-sm font-semibold text-green-400 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm font-semibold text-green-400 print:text-black">
                         {formatarMoeda(
                           compromisso.totalPago
                         )}
                       </td>
 
-                      <td className="px-4 py-3 text-sm font-bold text-orange-400 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm font-bold text-orange-400 print:text-black">
                         {formatarMoeda(
                           compromisso.saldoDevedor
                         )}
                       </td>
 
-                      <td className="px-4 py-3">
+                      <td className="break-words px-3 py-2">
                         <span className="inline-flex min-w-[82px] justify-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 text-[10px] font-semibold text-yellow-400 print:border-gray-400 print:bg-transparent print:text-black">
                           Em aberto
                         </span>

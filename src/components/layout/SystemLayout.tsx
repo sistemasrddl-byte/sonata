@@ -14,12 +14,10 @@ import {
   Music2,
   Settings,
   Users,
-  UserRound,
-  Palette,
   Wallet,
   X,
 } from "lucide-react";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 
 import { auth } from "@/lib/firebase";
 
@@ -68,13 +66,6 @@ const menuItems = [
     href: "/configuracoes",
     icon: Settings,
   },
-
-];
-
-const configuracaoItems = [
-  { label: "Dados da escola", href: "/configuracoes", icon: Settings },
-  { label: "Usuário / Conta", href: "/configuracoes/usuario", icon: UserRound },
-  { label: "Aparência", href: "/configuracoes/aparencia", icon: Palette },
 ];
 
 export default function SystemLayout({
@@ -85,35 +76,6 @@ export default function SystemLayout({
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
-
-  useEffect(() => {
-    function aplicarTema() {
-      const preferencia = localStorage.getItem("sonata-theme") || "dark";
-
-      if (preferencia === "system") {
-        const claro = window.matchMedia("(prefers-color-scheme: light)").matches;
-        document.documentElement.dataset.theme = claro ? "light" : "dark";
-        return;
-      }
-
-      document.documentElement.dataset.theme = preferencia;
-    }
-
-    aplicarTema();
-
-    const atualizar = () => aplicarTema();
-    window.addEventListener("sonata-theme-change", atualizar);
-    window.addEventListener("storage", atualizar);
-
-    const media = window.matchMedia("(prefers-color-scheme: light)");
-    media.addEventListener("change", atualizar);
-
-    return () => {
-      window.removeEventListener("sonata-theme-change", atualizar);
-      window.removeEventListener("storage", atualizar);
-      media.removeEventListener("change", atualizar);
-    };
-  }, []);
 
   async function handleLogout() {
     try {
@@ -156,7 +118,7 @@ export default function SystemLayout({
             </h1>
 
             <p className="text-[11px] text-gray-500">
-              Sistema de Gestão 1.1
+              Sistema de Gestão 1.2
             </p>
           </div>
         </div>
@@ -173,45 +135,30 @@ export default function SystemLayout({
               const active = isActive(item.href);
 
               return (
-                <div key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition ${
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    flex items-center gap-3 rounded-lg px-3 py-2.5
+                    text-sm transition
+                    ${
                       active
                         ? "bg-[#FDC700]/10 text-[#FDC700]"
                         : "text-gray-400 hover:bg-[#222] hover:text-white"
-                    }`}
-                  >
-                    <Icon size={19} className={active ? "text-[#FDC700]" : "text-gray-500"} />
-                    <span>{item.label}</span>
-                  </Link>
+                    }
+                  `}
+                >
+                  <Icon
+                    size={19}
+                    className={
+                      active
+                        ? "text-[#FDC700]"
+                        : "text-gray-500"
+                    }
+                  />
 
-                  {item.href === "/configuracoes" && pathname.startsWith("/configuracoes") && (
-                    <div className="ml-4 mt-1 space-y-1 border-l border-[#303030] pl-2">
-                      {configuracaoItems.map((subitem) => {
-                        const SubIcon = subitem.icon;
-                        const subActive = subitem.href === "/configuracoes"
-                          ? pathname === "/configuracoes"
-                          : pathname.startsWith(subitem.href);
-
-                        return (
-                          <Link
-                            key={subitem.href}
-                            href={subitem.href}
-                            className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-xs transition ${
-                              subActive
-                                ? "bg-[#FDC700]/10 text-[#FDC700]"
-                                : "text-gray-500 hover:bg-[#222] hover:text-white"
-                            }`}
-                          >
-                            <SubIcon size={15} />
-                            <span>{subitem.label}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
+                  <span>{item.label}</span>
+                </Link>
               );
             })}
           </div>
@@ -237,7 +184,7 @@ export default function SystemLayout({
       </aside>
 
       {/* HEADER MOBILE */}
-      <header className="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b border-[#2c2c2c] bg-[#171717]/95 px-4 backdrop-blur lg:hidden">
+      <header className="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b border-[#2c2c2c] bg-[#171717]/95 px-4 backdrop-blur lg:hidden print:hidden">
         <button
           type="button"
           onClick={() => setMobileMenuOpen(true)}
@@ -319,47 +266,24 @@ export default function SystemLayout({
                   const active = isActive(item.href);
 
                   return (
-                    <div key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition ${
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`
+                        flex items-center gap-3 rounded-lg px-3 py-3
+                        text-sm transition
+                        ${
                           active
                             ? "bg-[#FDC700]/10 text-[#FDC700]"
                             : "text-gray-400 hover:bg-[#222] hover:text-white"
-                        }`}
-                      >
-                        <Icon size={19} />
-                        <span>{item.label}</span>
-                      </Link>
+                        }
+                      `}
+                    >
+                      <Icon size={19} />
 
-                      {item.href === "/configuracoes" && pathname.startsWith("/configuracoes") && (
-                        <div className="ml-4 mt-1 space-y-1 border-l border-[#303030] pl-2">
-                          {configuracaoItems.map((subitem) => {
-                            const SubIcon = subitem.icon;
-                            const subActive = subitem.href === "/configuracoes"
-                              ? pathname === "/configuracoes"
-                              : pathname.startsWith(subitem.href);
-
-                            return (
-                              <Link
-                                key={subitem.href}
-                                href={subitem.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-xs transition ${
-                                  subActive
-                                    ? "bg-[#FDC700]/10 text-[#FDC700]"
-                                    : "text-gray-500 hover:bg-[#222] hover:text-white"
-                                }`}
-                              >
-                                <SubIcon size={15} />
-                                <span>{subitem.label}</span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
+                      <span>{item.label}</span>
+                    </Link>
                   );
                 })}
               </div>

@@ -445,8 +445,8 @@ export default function RelatorioAulasPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[950px]">
+            <div className="overflow-x-auto print:overflow-visible">
+              <table className="w-full min-w-[950px] print:min-w-0 print:w-full print:table-fixed">
                 <thead className="border-b border-[#303030] bg-[#181818] print:border-gray-300 print:bg-gray-100">
                   <tr>
                     {[
@@ -460,7 +460,7 @@ export default function RelatorioAulasPage() {
                     ].map((titulo) => (
                       <th
                         key={titulo}
-                        className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                        className="break-words px-3 py-2 text-left text-xs font-medium text-gray-500"
                       >
                         {titulo}
                       </th>
@@ -474,31 +474,31 @@ export default function RelatorioAulasPage() {
                       key={`${registro.tipo}-${registro.id}`}
                       className="hover:bg-[#202020] print:hover:bg-transparent"
                     >
-                      <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                         {registro.tipo === "reposicao"
                           ? formatarData(registro.data)
                           : nomesDias[registro.diaSemana ?? ""] ?? "-"}
                       </td>
 
-                      <td className="px-4 py-3 text-sm font-medium text-white print:text-black">
+                      <td className="break-words px-3 py-2 text-sm font-medium text-white print:text-black">
                         {registro.horario}
                       </td>
 
-                      <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                         {nomeAluno(registro.alunoId)}
                       </td>
 
-                      <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                      <td className="break-words px-3 py-2 text-sm text-gray-300 print:text-black">
                         {nomeProfessor(registro.professorId)}
                       </td>
 
-                      <td className="px-4 py-3">
+                      <td className="break-words px-3 py-2">
                         <span className="rounded-full bg-[#FDC700]/10 px-2.5 py-1 text-[10px] text-[#FDC700] print:border print:border-gray-400 print:bg-transparent print:text-black">
                           {registro.instrumento}
                         </span>
                       </td>
 
-                      <td className="px-4 py-3">
+                      <td className="break-words px-3 py-2">
                         <span className="rounded-full border border-[#303030] px-2.5 py-1 text-[10px] text-gray-400 print:border-gray-400 print:text-black">
                           {registro.tipo === "reposicao"
                             ? "Reposição"
@@ -506,7 +506,7 @@ export default function RelatorioAulasPage() {
                         </span>
                       </td>
 
-                      <td className="px-4 py-3">
+                      <td className="break-words px-3 py-2">
                         <span
                           className={`inline-flex min-w-[62px] justify-center rounded-full border px-2.5 py-1 text-[10px] font-semibold ${
                             registro.ativo

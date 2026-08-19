@@ -1079,7 +1079,7 @@ export default function RelatorioFrequenciaPage() {
 
         {/* Lista */}
 
-        <div className="overflow-hidden rounded-2xl border border-[#303030] bg-[#1c1c1c] print:border-gray-300 print:bg-white">
+        <div className="overflow-hidden rounded-2xl border border-[#303030] bg-[#1c1c1c] print:rounded-none print:border-gray-300 print:bg-white">
 
           <div className="flex items-center justify-between gap-3 border-b border-[#303030] px-4 py-4 print:border-gray-300">
             <div>
@@ -1139,37 +1139,37 @@ export default function RelatorioFrequenciaPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto print:overflow-visible">
 
-              <table className="w-full min-w-[900px]">
+              <table className="w-full min-w-[900px] print:min-w-0 print:w-full print:table-fixed">
 
                 <thead className="border-b border-[#303030] bg-[#181818] print:border-gray-300 print:bg-gray-100">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[14%] print:px-2 print:py-2 print:text-[9px]">
                       Data
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[10%] print:px-2 print:py-2 print:text-[9px]">
                       Horário
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[18%] print:px-2 print:py-2 print:text-[9px]">
                       Aluno
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[17%] print:px-2 print:py-2 print:text-[9px]">
                       Instrumento
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[23%] print:px-2 print:py-2 print:text-[9px]">
                       Professor
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[9%] print:px-2 print:py-2 print:text-[9px]">
                       Tipo
                     </th>
 
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 print:w-[14%] print:px-2 print:py-2 print:text-[9px]">
                       Status
                     </th>
                   </tr>
@@ -1201,33 +1201,33 @@ export default function RelatorioFrequenciaPage() {
                           className="hover:bg-[#202020] print:hover:bg-transparent"
                         >
 
-                          <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                          <td className="px-4 py-3 text-sm text-gray-300 print:px-2 print:py-2 print:text-[10px] print:text-black">
                             {formatarData(
                               registro.data
                             )}
                           </td>
 
-                          <td className="px-4 py-3 text-sm font-medium text-white print:text-black">
+                          <td className="px-4 py-3 text-sm font-medium text-white print:px-2 print:py-2 print:text-[10px] print:text-black">
                             {registro.horario}
                           </td>
 
-                          <td className="px-4 py-3 text-sm text-gray-300 print:text-black">
+                          <td className="px-4 py-3 text-sm text-gray-300 print:px-2 print:py-2 print:text-[10px] print:text-black">
                             {aluno?.nome ??
                               "Aluno não encontrado"}
                           </td>
 
-                          <td className="px-4 py-3 text-sm text-gray-400 print:text-black">
+                          <td className="px-4 py-3 text-sm text-gray-400 print:px-2 print:py-2 print:text-[10px] print:text-black">
                             {nomeInstrumento(
                               registro.instrumento
                             )}
                           </td>
 
-                          <td className="px-4 py-3 text-sm text-gray-400 print:text-black">
+                          <td className="px-4 py-3 text-sm text-gray-400 print:px-2 print:py-2 print:text-[10px] print:text-black">
                             {professor?.nome ??
                               "Professor não encontrado"}
                           </td>
 
-                          <td className="px-4 py-3">
+                          <td className="px-4 py-3 print:px-2 print:py-2 print:text-[10px]">
                             <span
                               className={`rounded-full px-2.5 py-1 text-[10px] ${
                                 registro.tipo ===
@@ -1243,7 +1243,7 @@ export default function RelatorioFrequenciaPage() {
                             </span>
                           </td>
 
-                          <td className="px-4 py-3">
+                          <td className="px-4 py-3 print:px-2 print:py-2 print:text-[10px]">
                             {status ? (
                               <span
                                 className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-medium ${statusInfo[status].className} print:border-gray-400 print:bg-transparent print:text-black`}
