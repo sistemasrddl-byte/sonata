@@ -22,6 +22,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { useRouter } from "next/navigation";
 
 import { listarAlunos } from "@/services/aluno.service";
 
@@ -175,6 +176,8 @@ const statusInfo: Record<
 ========================================================= */
 
 export default function FinanceiroPage() {
+  const router = useRouter();
+
   const [alunos, setAlunos] =
     useState<Aluno[]>([]);
 
@@ -1110,18 +1113,25 @@ export default function FinanceiroPage() {
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={
-                abrirNovaMensalidade
-              }
-              className="flex h-10 items-center justify-center gap-2 rounded-lg bg-[#FDC700] px-4 text-sm font-bold text-black transition hover:bg-[#e5b400]"
-            >
-              <Plus
-                size={17}
-              />
-              Nova mensalidade
-            </button>
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => router.push("/financeiro/despesas")}
+                className="flex h-10 items-center justify-center gap-2 rounded-lg border border-[#FDC700]/40 bg-[#FDC700]/10 px-4 text-sm font-semibold text-[#FDC700] transition hover:bg-[#FDC700]/20"
+              >
+                <Wallet size={17} />
+                <span>Despesas</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={abrirNovaMensalidade}
+                className="flex h-10 items-center justify-center gap-2 rounded-lg bg-[#FDC700] px-4 text-sm font-bold text-black transition hover:bg-[#e5b400]"
+              >
+                <Plus size={17} />
+                Nova mensalidade
+              </button>
+            </div>
 
           </div>
 

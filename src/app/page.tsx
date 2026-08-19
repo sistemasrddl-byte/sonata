@@ -72,7 +72,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-0.5 text-sm sm:text-base text-gray-400">
-              Sistema de Gestão
+              Sistema de Gestão 1.1
             </p>
           </div>
 
