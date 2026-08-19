@@ -156,7 +156,7 @@ export default function SystemLayout({
             </h1>
 
             <p className="text-[11px] text-gray-500">
-              Sistema de Gestão
+              Sistema de Gestão 1.1
             </p>
           </div>
         </div>

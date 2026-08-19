@@ -376,14 +376,17 @@ function obterAulasDaSemana(
   const fim = adicionarDias(inicio, 6);
   const resultado: ProximaAula[] = [];
 
+  // A semana do Dashboard começa na segunda-feira.
+  // Portanto, segunda = 0, terça = 1, quarta = 2, etc.
+  // Isso evita que as aulas recorrentes apareçam um dia à frente.
   const ordem: Record<DiaSemana, number> = {
-    domingo: 0,
-    segunda: 1,
-    terça: 2,
-    quarta: 3,
-    quinta: 4,
-    sexta: 5,
-    sábado: 6,
+    segunda: 0,
+    terça: 1,
+    quarta: 2,
+    quinta: 3,
+    sexta: 4,
+    sábado: 5,
+    domingo: 6,
   };
 
   for (const aula of aulas) {
